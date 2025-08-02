@@ -12,26 +12,27 @@
     }
 
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background-color: #f2f4f8;
-      color: #212121;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      color: #1a1a1a;
       line-height: 1.6;
     }
 
     header {
-      background-color: #0055aa;
-      color: #fff;
+      background: linear-gradient(to right, #0077b6, #023e8a);
+      color: white;
       text-align: center;
       padding: 2em 1em;
     }
 
     header h1 {
       font-size: 2.5em;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
     }
 
     header p {
       font-size: 1.2em;
+      font-weight: 300;
     }
 
     main {
@@ -41,36 +42,29 @@
     }
 
     section {
+      background-color: white;
       margin-bottom: 2em;
-      background-color: #fff;
-      padding: 1.5em;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
 
     section h2 {
-      color: #0055aa;
       font-size: 1.8em;
-      margin-bottom: 0.75em;
+      margin-bottom: 1em;
+      color: #023e8a;
+    }
+
+    p, li {
+      font-size: 1.05em;
     }
 
     ul {
-      list-style: none;
-      padding-left: 0;
+      padding-left: 1.2em;
     }
 
     ul li {
       margin-bottom: 0.5em;
-      padding-left: 1em;
-      position: relative;
-    }
-
-    ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: #0055aa;
-      font-size: 1.2em;
     }
 
     .video-container {
@@ -78,32 +72,60 @@
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .video-container iframe {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
     }
 
     a {
-      color: #0055aa;
+      color: #0077b6;
       text-decoration: none;
+      transition: 0.3s;
     }
 
     a:hover {
       text-decoration: underline;
     }
 
+    .repo-links a {
+      display: inline-block;
+      margin: 0.4em 0.5em 0.4em 0;
+      padding: 0.5em 1em;
+      background-color: #0077b6;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .repo-links a:hover {
+      background-color: #005f8a;
+    }
+
     footer {
-      background-color: #e1e4ea;
-      color: #555;
       text-align: center;
       padding: 1em;
+      background-color: #e0e0e0;
       font-size: 0.9em;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      section h2 {
+        font-size: 1.5em;
+      }
     }
   </style>
 </head>
@@ -117,41 +139,33 @@
     <section>
       <h2>Vídeo do Pitch</h2>
       <div class="video-container">
-        <iframe width="560" height="315" src="https://youtu.be/4Q2RPCCG9fQ" 
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-          gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/4Q2RPCCG9fQ" 
+                allowfullscreen></iframe>
       </div>
     </section>
 
     <section>
       <h2>Vídeo Demonstração</h2>
       <div class="video-container">
-        <iframe width="560" height="315" src="https://youtu.be/4Q2RPCCG9fQ" 
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-          gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/4Q2RPCCG9fQ" 
+                allowfullscreen></iframe>
       </div>
     </section>
 
     <section>
-      <h2>💡 Sobre o Projeto</h2>
+      <h2>Sobre o Projeto</h2>
       <p>
         O <strong>Água em Ação</strong> é um sistema de monitoramento inteligente para cisternas e reservatórios, usando sensores e IA para detectar nível da água, pH e rachaduras estruturais. Os dados são enviados por microcontroladores para uma API que os armazena em um banco de dados e disponibiliza em dashboards para tomada de decisão.
       </p>
     </section>
 
     <section>
-      <h2>🔗 Repositório</h2>
-      <p>
-        Acesse nosso repositório público no GitHub: 
-        <br> 
-        <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank">Sistema WEB</a>
-        <br>
+      <h2>Repositórios GitHub</h2>
+      <div class="repo-links">
+        <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank">Sistema Web</a>
         <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank">Sensoriamento</a>
-        <br>
-        <a href="https://github.com/picpnovaes/Opencv/tree/Treinamento-IA/Treino%20YOLO" target="_blank">Inteligencia Artificial</a>
-      </p>
+        <a href="https://github.com/picpnovaes/Opencv/tree/Treinamento-IA/Treino%20YOLO" target="_blank">Inteligência Artificial</a>
+      </div>
     </section>
 
     <section>
@@ -167,7 +181,7 @@
     </section>
 
     <section>
-      <h2>⚙️ Tecnologias Utilizadas</h2>
+      <h2>Tecnologias Utilizadas</h2>
       <ul>
         <li>ESP32, Arduino Uno, Raspberry Pi Pico</li>
         <li>Sensores de nível (boia) e pH</li>
@@ -177,7 +191,6 @@
         <li>Comunicação via TCP</li>
       </ul>
     </section>
-
   </main>
 
   <footer>
