@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Água em Ação</title>
+  <title>Projeto Água em Ação</title>
   <style>
     * {
       margin: 0;
@@ -13,14 +13,16 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f2f5;
-      color: #1a1a1a;
-      line-height: 1.6;
+      background-color: #f4f6f8;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(to right, #0077b6, #023e8a);
-      color: white;
+      background: linear-gradient(90deg, #0077b6, #023e8a);
+      color: #fff;
       text-align: center;
       padding: 2em 1em;
     }
@@ -36,35 +38,34 @@
     }
 
     main {
+      flex: 1;
       padding: 2em 1em;
       max-width: 960px;
       margin: 0 auto;
     }
 
     section {
-      background-color: white;
-      margin-bottom: 2em;
-      padding: 2em;
+      background: #fff;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      padding: 2em;
+      margin-bottom: 2em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
     }
 
     section h2 {
-      font-size: 1.8em;
+      font-size: 1.75em;
       margin-bottom: 1em;
       color: #023e8a;
     }
 
     p, li {
       font-size: 1.05em;
+      line-height: 1.6;
     }
 
     ul {
       padding-left: 1.2em;
-    }
-
-    ul li {
-      margin-bottom: 0.5em;
+      list-style-type: disc;
     }
 
     .video-container {
@@ -85,24 +86,20 @@
       border: none;
     }
 
-    a {
-      color: #0077b6;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    .repo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-top: 1em;
     }
 
     .repo-links a {
-      display: inline-block;
-      margin: 0.4em 0.5em 0.4em 0;
-      padding: 0.5em 1em;
+      padding: 0.6em 1.2em;
       background-color: #0077b6;
-      color: white;
-      border-radius: 5px;
+      color: #fff;
+      border-radius: 6px;
       text-decoration: none;
+      font-weight: 500;
       transition: background 0.3s ease;
     }
 
@@ -110,21 +107,34 @@
       background-color: #005f8a;
     }
 
+    a {
+      color: #0077b6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     footer {
+      background-color: #e0e0e0;
+      color: #555;
       text-align: center;
       padding: 1em;
-      background-color: #e0e0e0;
       font-size: 0.9em;
-      color: #555;
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.8em;
+        font-size: 2em;
       }
 
       section h2 {
-        font-size: 1.5em;
+        font-size: 1.4em;
+      }
+
+      .repo-links {
+        flex-direction: column;
       }
     }
   </style>
@@ -139,23 +149,21 @@
     <section>
       <h2>Vídeo do Pitch</h2>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/4Q2RPCCG9fQ" 
-                allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/4Q2RPCCG9fQ" allowfullscreen></iframe>
       </div>
     </section>
 
     <section>
       <h2>Vídeo Demonstração</h2>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/watch?v=mBFGmqhXe6A" 
-                allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/mBFGmqhXe6A" allowfullscreen></iframe>
       </div>
     </section>
 
     <section>
       <h2>Sobre o Projeto</h2>
       <p>
-        O <strong>Água em Ação</strong> é um sistema de monitoramento inteligente para cisternas e reservatórios, usando sensores e IA para detectar nível da água, pH e rachaduras estruturais. Os dados são enviados por microcontroladores para uma API que os armazena em um banco de dados e disponibiliza em dashboards para tomada de decisão.
+        O <strong>Água em Ação</strong> é um sistema de monitoramento inteligente para cisternas e reservatórios, utilizando sensores e inteligência artificial para detectar nível da água, pH e possíveis rachaduras estruturais. Os dados são enviados por microcontroladores para uma API que os armazena em um banco de dados, permitindo visualização por dashboards e tomada de decisão.
       </p>
     </section>
 
@@ -194,7 +202,7 @@
   </main>
 
   <footer>
-    <p>©️ 2025 Projeto Água em Ação - Engenharia da Computação - UFRPE/UABJ</p>
+    <p>© 2025 Projeto Água em Ação - Engenharia da Computação - UFRPE/UABJ</p>
   </footer>
 </body>
 </html>
