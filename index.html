@@ -5,226 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sensorium - Monitoramento Inteligente</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
-      color: #222;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background: linear-gradient(90deg, #0077b6, #023e8a);
-      color: #fff;
-      text-align: center;
-      padding: 2em 1em 1em; /* Ajustado para a nav */
-    }
-
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.3em;
-    }
-
-    header p {
-      font-size: 1.2em;
-      font-weight: 300;
-    }
-
-    /* Estilos para a nova navegação */
-    .main-nav {
-      margin-top: 1.5em;
-      padding-top: 1em;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .main-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      margin: 0 1em;
-      padding: 0.5em 1em;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    .main-nav a:hover {
-      background-color: #005f8a;
-    }
-    /* Fim Estilos para a nova navegação */
-
-    main {
-      flex: 1;
-      padding: 2em 1em;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    section {
-      background: #fff;
-      border-radius: 10px;
-      padding: 2em;
-      margin-bottom: 2em;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-    }
-
-    section h2 {
-      font-size: 1.75em;
-      margin-bottom: 1em;
-      color: #023e8a;
-    }
-    
-    /* Estilos para a lista de features "Como Funciona" */
-    .features-list h3 {
-      font-size: 1.25em;
-      color: #0077b6;
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-      border-bottom: 2px solid #f4f6f8;
-      padding-bottom: 0.2em;
-    }
-
-    .features-list h3:first-child {
-      margin-top: 0;
-    }
-    /* Fim Estilos para a lista de features */
-
-    p, li {
-      font-size: 1.05em;
-      line-height: 1.6;
-    }
-
-    ul {
-      padding-left: 1.2em;
-      list-style-type: disc;
-    }
-
-    .repo-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1em;
-      margin-top: 1em;
-    }
-
-    .repo-links a {
-      padding: 0.6em 1.2em;
-      background-color: #0077b6;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: background 0.3s ease;
-    }
-
-    .repo-links a:hover {
-      background-color: #005f8a;
-    }
-
-    a {
-      color: #0077b6;
-    }
-
-    footer {
-      background-color: #e0e0e0;
-      color: #555;
-      text-align: center;
-      padding: 1em;
-      font-size: 0.9em;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-
-      section h2 {
-        font-size: 1.4em;
-      }
-
-      .repo-links {
-        flex-direction: column;
-      }
-      
-      .main-nav a {
-        display: block;
-        margin: 0.5em 0;
-      }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f8; color: #222; display: flex; flex-direction: column; min-height: 100vh; }
+    header { background: linear-gradient(90deg, #0077b6, #023e8a); color: #fff; text-align: center; padding: 2em 1em 1em; }
+    header h1 { font-size: 2.5em; margin-bottom: 0.3em; }
+    header p { font-size: 1.2em; font-weight: 300; }
+    .main-nav { margin-top: 1.5em; padding-top: 1em; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+    .main-nav a { color: #fff; text-decoration: none; font-weight: 500; margin: 0 1em; padding: 0.5em 1em; border-radius: 4px; transition: background-color 0.3s; }
+    .main-nav a:hover { background-color: #005f8a; }
+    main { flex: 1; padding: 2em 1em; max-width: 960px; margin: 0 auto; }
+    section { background: #fff; border-radius: 10px; padding: 2em; margin-bottom: 2em; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); }
+    section h2 { font-size: 1.75em; margin-bottom: 1em; color: #023e8a; }
+    .features-list h3 { font-size: 1.25em; color: #0077b6; margin-top: 1.5em; margin-bottom: 0.5em; border-bottom: 2px solid #f4f6f8; padding-bottom: 0.2em; }
+    .features-list h3:first-child { margin-top: 0; }
+    p, li { font-size: 1.05em; line-height: 1.6; }
+    ul { padding-left: 1.2em; list-style-type: disc; }
+    .repo-links { display: flex; flex-wrap: wrap; gap: 1em; margin-top: 1em; }
+    .repo-links a { padding: 0.6em 1.2em; background-color: #0077b6; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.3s ease; }
+    .repo-links a:hover { background-color: #005f8a; }
+    a { color: #0077b6; }
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 0.7em; margin: 1em 0; }
+    .tech-badges span { background: #e0e7ef; color: #023e8a; border-radius: 4px; padding: 0.3em 0.8em; font-size: 0.98em; font-weight: 500; }
+    .api-highlight { background: #e0f7fa; border-left: 5px solid #0077b6; padding: 1em; margin: 1.5em 0; border-radius: 6px; }
+    footer { background-color: #e0e0e0; color: #555; text-align: center; padding: 1em; font-size: 0.9em; }
+    @media (max-width: 600px) { header h1 { font-size: 2em; } section h2 { font-size: 1.4em; } .repo-links { flex-direction: column; } .main-nav a { display: block; margin: 0.5em 0; } }
   </style>
 </head>
 <body>
   <header>
     <h1>Sensorium</h1>
-    <p>Plataforma inovadora para monitoramento inteligente através de sensores.</p>
-    
+    <p>Monitoramento inteligente e integração de sensores em tempo real com dashboards modernos.</p>
+    <p>Navegue pelo nosso sistema:</p>
     <nav class="main-nav">
-      <a href="http://18.190.79.68:8001/">Início</a>
-      <a href="http://18.190.79.68:8001/login_usuario.html">Login</a>
-      <a href="http://18.190.79.68:8001/cadastro.html">Cadastro</a>
-      <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
+       <a href="http://18.190.79.68:8001/">Início</a>
+       <a href="http://18.190.79.68:8001/login_usuario.html">Login</a>
+       <a href="http://18.190.79.68:8001/cadastro.html">Cadastro</a>
+        <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
     </nav>
   </header>
-
   <main>
     <section>
-      <h2>Sobre o Sensorium - Como Funciona</h2>
-      <div class="features-list">
-        <h3>Instalação Simplificada</h3>
-        <p>Configure seus sensores em poucos passos. Nossa interface é intuitiva e o processo é otimizado para sua comodidade.</p>
-
-        <h3>Gestão Inteligente</h3>
-        <p>Tenha controle total sobre dispositivos e dados. Acompanhe o status em tempo real e receba atualizações automáticas sobre seus sensores.</p>
-
-        <h3>Monitoramento Avançado</h3>
-        <p>Acompanhamento em tempo real dos dados. Obtenha informações precisas e relatórios detalhados para garantir sua segurança e otimizar o uso de recursos.</p>
+      <h2>O que é o Sensorium?</h2>
+      <p>O Sensorium é uma plataforma completa para monitoramento inteligente de ambientes, integrando sensores físicos (ESP32, Arduino, Raspberry Pi Pico) a um backend robusto em Python (FastAPI), com visualização de dados em dashboards web modernos. Ideal para aplicações acadêmicas, industriais e residenciais.</p>
+      <div class="tech-badges">
+        <span>FastAPI</span>
+        <span>MySQL</span>
+        <span>Docker</span>
+        <span>Pytest</span>
+        <span>Arduino/ESP32</span>
+        <span>Raspberry Pi Pico</span>
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>AWS EC2</span>
       </div>
     </section>
-
+    <section>
+      <h2>Principais Funcionalidades</h2>
+      <div class="features-list">
+        <h3>Instalação e Deploy Simplificados</h3>
+        <p>Utilize Docker para subir todo o ambiente (backend, banco de dados, testes) com um único comando.</p>
+        <h3>API RESTful Moderna</h3>
+        <p>Backend em FastAPI, com endpoints seguros, JWT, integração com sensores e documentação automática (Swagger/OpenAPI).</p>
+        <h3>Dashboards Interativos</h3>
+        <p>Visualize leituras em tempo real, relatórios e status dos sensores em uma interface web responsiva.</p>
+        <h3>Testes Automatizados</h3>
+        <p>Testes unitários e de integração com Pytest, garantindo qualidade e confiabilidade do sistema.</p>
+        <h3>Integração com Hardware</h3>
+        <p>Comunicação direta com ESP32, Arduino e Raspberry Pi Pico para coleta e envio de dados.</p>
+      </div>
+      </div>
+    </section>
     <section>
       <h2>Repositórios GitHub</h2>
       <div class="repo-links">
-        <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank">Sistema Web</a>
-        <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank">Sensoriamento</a>
-        <a href="https://github.com/picpnovaes/Opencv/tree/Treinamento-IA/Treino%20YOLO" target="_blank">Inteligência Artificial</a>
+        <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank">Sistema Web & API</a>
+        <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank">Sensoriamento (Firmware)</a>
       </div>
     </section>
-
     <section>
       <h2>Equipe</h2>
       <ul>
-        <li><strong>Gabriel Alves:</strong> Implementação da segurança na navegação do sistema, hospedagem em nuvem (AWS EC2) e melhorias nos dashboards para usuários e administradores.</li>
-        <li><strong>João Victor:</strong> Correção de bugs e inclusão de novas funcionalidades no frontend para aprimorar a experiência do usuário.</li>
-        <li><strong>Luís Felipe de Arruda Gomes:</strong> Desenvolvimento da API e do servidor responsáveis pela comunicação com o ESP32 e Arduino, integrando sensores e banco de dados.</li>
-        <li><strong>Pedro Ivo Cavalcante:</strong> Treinamento e implementação da IA com foco na detecção de rachaduras estruturais, utilizando a plataforma Hugging Face.</li>
-        <li><strong>Pedro Marques:</strong> Elaboração do edital do projeto, desenvolvimento do layout das interfaces e melhorias visuais no sistema.</li>
-        <li><strong>Vinícius Rodrigues:</strong> Implementação da comunicação cliente-servidor via protocolo TCP e integração de sensores ao Raspberry Pi Pico.</li>
+          <li><strong>Gabriel Alves:</strong> Responsável pela infraestrutura Docker e execução de testes.</li>
+          <li><strong>João Victor:</strong> Implementação da funcionalidade de login via Google utilizando OAuth.</li>
+          <li><strong>Luís Felipe de Arruda Gomes:</strong> Desenvolvimento da API com FastAPI, integração com sensores e criação de scripts para banco de dados.</li>
+          <li><strong>Pedro Ivo Cavalcante:</strong> Identificação e correção de erros na leitura dos sensores.</li>
+         <li><strong>Pedro Marques:</strong> Implementação do envio de e-mail de confirmação no cadastro.</li>
+        <li><strong>Vinícius Rodrigues:</strong> Desenvolvimento da compatibilidade com Raspberry Pi.</li>
+      </ul>
+
+    </section>
+    <section>
+      <h2>Como Executar Localmente</h2>
+      <ul>
+        <li>Clone o repositório principal e execute <code>docker-compose up --build</code></li>
+        <li>Acesse <a href="http://localhost:8001/">http://localhost:8001/</a> para visualizar o sistema</li>
       </ul>
     </section>
-
     <section>
-      <h2>Tecnologias Utilizadas</h2>
+      <h2>Como Executar na Web</h2>
       <ul>
-        <li>Microcontroladores: ESP32, Arduino Uno e Raspberry Pi Pico</li>
-        <li>Sensores de nível de água (boia) e pH</li>
-        <li>Desenvolvimento backend com Python (Flask)</li>
-        <li>Interface web com HTML, CSS e JavaScript</li>
-        <li>Banco de dados MySQL</li>
-        <li>Sistema de autenticação com Flask-Login</li>
-        <li>Hospedagem em nuvem via AWS EC2</li>
-        <li>Inteligência artificial com Hugging Face</li>
-        <li>Comunicação via protocolo TCP</li>
+        <li>acesse o link http://18.190.79.68:8001/</li>
       </ul>
     </section>
   </main>
-
   <footer>
-    <p>© 2025 Sensorium. Todos os direitos reservados. | Belo Jardim, PE</p>
+    <p>© 2025 Sensorium. Todos os direitos reservados. | UFRPE |  Belo Jardim, PE</p>
   </footer>
 </body>
 </html>
