@@ -28,7 +28,31 @@
     .tech-badges span { background: #e0e7ef; color: #023e8a; border-radius: 4px; padding: 0.3em 0.8em; font-size: 0.98em; font-weight: 500; }
     .api-highlight { background: #e0f7fa; border-left: 5px solid #0077b6; padding: 1em; margin: 1.5em 0; border-radius: 6px; }
     footer { background-color: #e0e0e0; color: #555; text-align: center; padding: 1em; font-size: 0.9em; }
-    @media (max-width: 600px) { header h1 { font-size: 2em; } section h2 { font-size: 1.4em; } .repo-links { flex-direction: column; } .main-nav a { display: block; margin: 0.5em 0; } }
+
+    /* Responsividade do vídeo */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2em; }
+      section h2 { font-size: 1.4em; }
+      .repo-links { flex-direction: column; }
+      .main-nav a { display: block; margin: 0.5em 0; }
+    }
   </style>
 </head>
 <body>
@@ -43,6 +67,7 @@
        <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
     </nav>
   </header>
+
   <main>
     <section>
       <h2>O que é o Sensorium?</h2>
@@ -148,6 +173,7 @@
       </ul>
     </section>
 
+
     <section>
       <h2>Como Executar Localmente</h2>
       <ul>
@@ -161,6 +187,13 @@
       <ul>
         <li>Acesse o link <a href="http://18.190.79.68:8001/">http://18.190.79.68:8001/</a></li>
       </ul>
+    </section>
+    <section>
+      <h2>Demonstração em Vídeo</h2>
+      <p>Confira abaixo a demonstração prática do projeto Sensorium em funcionamento:</p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/H6O8vtQYtQE" title="Demonstração Sensorium" allowfullscreen></iframe>
+      </div>
     </section>
   </main>
 
