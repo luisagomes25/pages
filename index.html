@@ -40,7 +40,7 @@
        <a href="http://18.190.79.68:8001/">Início</a>
        <a href="http://18.190.79.68:8001/login_usuario.html">Login</a>
        <a href="http://18.190.79.68:8001/cadastro.html">Cadastro</a>
-        <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
+       <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
     </nav>
   </header>
   <main>
@@ -60,6 +60,7 @@
         <span>AWS EC2</span>
       </div>
     </section>
+
     <section>
       <h2>Principais Funcionalidades</h2>
       <div class="features-list">
@@ -74,8 +75,8 @@
         <h3>Integração com Hardware</h3>
         <p>Comunicação direta com ESP32, Arduino e Raspberry Pi Pico para coleta e envio de dados.</p>
       </div>
-      </div>
     </section>
+
     <section>
       <h2>Repositórios GitHub</h2>
       <div class="repo-links">
@@ -83,18 +84,70 @@
         <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank">Sensoriamento (Firmware)</a>
       </div>
     </section>
+
     <section>
       <h2>Equipe</h2>
       <ul>
-          <li><strong>Gabriel Alves:</strong> Responsável pela infraestrutura Docker e execução de testes.</li>
-          <li><strong>João Victor:</strong> Implementação da funcionalidade de login via Google utilizando OAuth.</li>
-          <li><strong>Luís Felipe de Arruda Gomes:</strong> Desenvolvimento da API com FastAPI, integração com sensores e criação de scripts para banco de dados.</li>
-          <li><strong>Pedro Ivo Cavalcante:</strong> Identificação e correção de erros na leitura dos sensores.</li>
-         <li><strong>Pedro Marques:</strong> Implementação do envio de e-mail de confirmação no cadastro.</li>
+        <li><strong>Gabriel Alves:</strong> Responsável pela infraestrutura Docker e execução de testes.</li>
+        <li><strong>João Victor:</strong> Implementação da funcionalidade de login via Google utilizando OAuth.</li>
+        <li><strong>Luís Felipe de Arruda Gomes:</strong> Desenvolvimento da API com FastAPI, integração com sensores e criação de scripts para banco de dados.</li>
+        <li><strong>Pedro Ivo Cavalcante:</strong> Identificação e correção de erros na leitura dos sensores.</li>
+        <li><strong>Pedro Marques:</strong> Implementação do envio de e-mail de confirmação no cadastro.</li>
         <li><strong>Vinícius Rodrigues:</strong> Desenvolvimento da compatibilidade com Raspberry Pi.</li>
       </ul>
-
     </section>
+
+    <section>
+      <h2>Tecnologias Utilizadas</h2>
+      <p>Análise completa do projeto:</p>
+
+      <h3>Backend</h3>
+      <ul>
+        <li><strong>Linguagem:</strong> Python</li>
+        <li><strong>Framework Principal:</strong> FastAPI (para construção de APIs de alta performance)</li>
+        <li><strong>Validação de Dados:</strong> Pydantic (para validação, serialização e documentação automática)</li>
+        <li><strong>ORM:</strong> SQLAlchemy (comunicação com MySQL)</li>
+        <li><strong>Autenticação e Segurança:</strong>
+          <ul>
+            <li>JWT (tokens de acesso para proteger rotas)</li>
+            <li>OAuth2 (fluxo de autenticação, incluindo Login com Google)</li>
+          </ul>
+        </li>
+        <li><strong>Servidor ASGI:</strong> Uvicorn (execução de alta performance da aplicação)</li>
+      </ul>
+
+      <h3>Frontend</h3>
+      <ul>
+        <li><strong>Estrutura e Estilo:</strong> HTML5, CSS3, Bootstrap 5</li>
+        <li><strong>Interatividade e Visualização de Dados:</strong> JavaScript, Chart.js</li>
+        <li><strong>Renderização no Servidor:</strong> Jinja2</li>
+      </ul>
+
+      <h3>Banco de Dados</h3>
+      <ul>
+        <li><strong>Principal:</strong> MySQL 8.0</li>
+        <li><strong>Testes:</strong> SQLite (em memória para testes unitários)</li>
+      </ul>
+
+      <h3>Testes e Qualidade de Código</h3>
+      <ul>
+        <li>Pytest (automação de testes unitários e de integração)</li>
+        <li>Coverage.py (análise de cobertura de código)</li>
+      </ul>
+
+      <h3>DevOps e Infraestrutura</h3>
+      <ul>
+        <li>Docker e Docker Compose (containerização da aplicação e dependências)</li>
+      </ul>
+
+      <h3>Hardware e Comunicação</h3>
+      <ul>
+        <li>Microcontroladores: ESP32, Arduino, Raspberry Pi Pico W</li>
+        <li>Sensores: Nível de água, pH, luz, umidade, entre outros</li>
+        <li>Protocolos: HTTP/HTTPS (comunicação web e hardware), Serial (Arduino)</li>
+      </ul>
+    </section>
+
     <section>
       <h2>Como Executar Localmente</h2>
       <ul>
@@ -102,15 +155,17 @@
         <li>Acesse <a href="http://localhost:8001/">http://localhost:8001/</a> para visualizar o sistema</li>
       </ul>
     </section>
+
     <section>
       <h2>Como Executar na Web</h2>
       <ul>
-        <li>acesse o link http://18.190.79.68:8001/</li>
+        <li>Acesse o link <a href="http://18.190.79.68:8001/">http://18.190.79.68:8001/</a></li>
       </ul>
     </section>
   </main>
+
   <footer>
-    <p>© 2025 Sensorium. Todos os direitos reservados. | UFRPE |  Belo Jardim, PE</p>
+    <p>© 2025 Sensorium. Todos os direitos reservados. | UFRPE | Belo Jardim, PE</p>
   </footer>
 </body>
 </html>
