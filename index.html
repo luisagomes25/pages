@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projeto Água em Ação</title>
+  <title>Sensorium - Monitoramento Inteligente</title>
   <style>
     * {
       margin: 0;
@@ -24,7 +24,7 @@
       background: linear-gradient(90deg, #0077b6, #023e8a);
       color: #fff;
       text-align: center;
-      padding: 2em 1em;
+      padding: 2em 1em 1em; /* Ajustado para a nav */
     }
 
     header h1 {
@@ -36,6 +36,28 @@
       font-size: 1.2em;
       font-weight: 300;
     }
+
+    /* Estilos para a nova navegação */
+    .main-nav {
+      margin-top: 1.5em;
+      padding-top: 1em;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .main-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 1em;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .main-nav a:hover {
+      background-color: #005f8a;
+    }
+    /* Fim Estilos para a nova navegação */
 
     main {
       flex: 1;
@@ -57,6 +79,21 @@
       margin-bottom: 1em;
       color: #023e8a;
     }
+    
+    /* Estilos para a lista de features "Como Funciona" */
+    .features-list h3 {
+      font-size: 1.25em;
+      color: #0077b6;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      border-bottom: 2px solid #f4f6f8;
+      padding-bottom: 0.2em;
+    }
+
+    .features-list h3:first-child {
+      margin-top: 0;
+    }
+    /* Fim Estilos para a lista de features */
 
     p, li {
       font-size: 1.05em;
@@ -66,40 +103,6 @@
     ul {
       padding-left: 1.2em;
       list-style-type: disc;
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 1em;
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-link {
-      text-align: center;
-      margin-top: 0.5em;
-    }
-
-    .video-link a {
-      color: #0077b6;
-      text-decoration: none;
-      font-size: 1em;
-    }
-
-    .video-link a:hover {
-      text-decoration: underline;
     }
 
     .repo-links {
@@ -147,41 +150,40 @@
       .repo-links {
         flex-direction: column;
       }
+      
+      .main-nav a {
+        display: block;
+        margin: 0.5em 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Projeto Água em Ação</h1>
-    <p>Monitoramento inteligente de recursos hídricos em ambientes rurais</p>
+    <h1>Sensorium</h1>
+    <p>Plataforma inovadora para monitoramento inteligente através de sensores.</p>
+    
+    <nav class="main-nav">
+      <a href="http://18.190.79.68:8001/">Início</a>
+      <a href="http://18.190.79.68:8001/login_usuario.html">Login</a>
+      <a href="http://18.190.79.68:8001/cadastro.html">Cadastro</a>
+      <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
+    </nav>
   </header>
 
   <main>
     <section>
-      <h2>Vídeo do Pitch</h2>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/4Q2RPCCG9fQ" allowfullscreen></iframe>
-      </div>
-      <div class="video-link">
-        <a href="https://youtu.be/4Q2RPCCG9fQ" target="_blank">▶️ Assistir no YouTube</a>
-      </div>
-    </section>
+      <h2>Sobre o Sensorium - Como Funciona</h2>
+      <div class="features-list">
+        <h3>Instalação Simplificada</h3>
+        <p>Configure seus sensores em poucos passos. Nossa interface é intuitiva e o processo é otimizado para sua comodidade.</p>
 
-    <section>
-      <h2>Vídeo Demonstração</h2>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/eODJCJ4JX_M" allowfullscreen></iframe>
-      </div>
-      <div class="video-link">
-        <a href="https://youtu.be/eODJCJ4JX_M" target="_blank">▶️ Assistir no YouTube</a>
-      </div>
-    </section>
+        <h3>Gestão Inteligente</h3>
+        <p>Tenha controle total sobre dispositivos e dados. Acompanhe o status em tempo real e receba atualizações automáticas sobre seus sensores.</p>
 
-    <section>
-      <h2>Sobre o Projeto</h2>
-      <p>
-        O <strong>Água em Ação</strong> é uma solução tecnológica voltada para o monitoramento automatizado de cisternas e reservatórios, especialmente em comunidades rurais. O sistema utiliza sensores para medir o nível da água e o pH, além de empregar inteligência artificial para detectar possíveis rachaduras estruturais. As informações captadas são enviadas por microcontroladores a uma API, que armazena os dados em um banco de dados e os disponibiliza por meio de dashboards interativos, facilitando a gestão e a tomada de decisão.
-      </p>
+        <h3>Monitoramento Avançado</h3>
+        <p>Acompanhamento em tempo real dos dados. Obtenha informações precisas e relatórios detalhados para garantir sua segurança e otimizar o uso de recursos.</p>
+      </div>
     </section>
 
     <section>
@@ -222,7 +224,7 @@
   </main>
 
   <footer>
-    <p>© 2025 - Projeto Água em Ação | Curso de Engenharia da Computação - UFRPE / Unidade Acadêmica de Belo Jardim</p>
+    <p>© 2025 Sensorium. Todos os direitos reservados. | Belo Jardim, PE</p>
   </footer>
 </body>
 </html>
