@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sensorium - Monitoramento Inteligente</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ/cn6/f/vW8fGFLxM9cE00Y80F7rA6tK94D1K0A1uR7F9l9fR3F1g7Fz6JpQ=="
@@ -34,7 +39,8 @@
         /* RESET/BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            /* Adicionado fallback seguro para fonte */
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             background-color: var(--background-light);
             color: var(--text-color);
             display: flex;
@@ -155,7 +161,8 @@
         /* Melhoria nas Listas (UL) */
         ul { padding-left: 1.5em; list-style-type: none; }
         ul li::before {
-            content: "\f058";
+            /* Uso da fonte do Font Awesome para ícone customizado */
+            content: "\f058"; 
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             color: var(--accent-green);
@@ -206,6 +213,8 @@
             border-radius: 8px;
             font-weight: 500;
         }
+        /* Ajuste de cor do link API para melhor contraste em tema claro */
+        .api-highlight a { color: #ff9900; font-weight: 700; text-decoration: underline; }
 
         /* FOOTER */
         footer {
@@ -242,6 +251,8 @@
         [data-theme="dark"] .api-highlight {
             background: #3b2300; border-left-color: #e3b341; color: #fff;
         }
+        /* Ajuste de cor do link API para melhor contraste em tema escuro */
+        [data-theme="dark"] .api-highlight a { color: #ffe79c; font-weight: 700; }
         [data-theme="dark"] footer { background-color: #0f141a; color: #8b949e; border-top-color: #22262b; }
 
         /* MEDIA QUERIES */
@@ -258,8 +269,10 @@
     </style>
 </head>
 <body>
+    <div id="themeFeedback" aria-live="polite" style="position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; margin: -1px; overflow: hidden;"></div>
+
     <header>
-        <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo entre Claro e Escuro">
             <i class="fas fa-moon" id="themeIcon"></i> <span id="themeText">Modo Escuro</span>
         </button>
 
@@ -280,6 +293,7 @@
             <p>O <strong>Sensorium</strong> é uma plataforma completa para monitoramento inteligente de ambientes, integrando sensores físicos
             (<strong>ESP32</strong>, <strong>Arduino</strong>, <strong>Raspberry Pi Pico</strong>) a um backend robusto em Python (FastAPI),
             com visualização de dados em dashboards web modernos. Ideal para aplicações acadêmicas, industriais e residenciais.</p>
+            
 
             <div class="tech-badges" aria-hidden="true">
                 <span>FastAPI</span>
@@ -322,17 +336,16 @@
                 <li>Registro e recuperação de leituras de sensores</li>
                 <li>Gerenciamento de notificações e regras de alerta</li>
             </ul>
-            <p class="api-highlight"><i class="fas fa-file-alt"></i> <strong>Documentação da API:</strong> Acesse a documentação completa em
-               <a href="/docs">http://localhost:8001/docs</a> (durante execução local).</p>
+            <p class="api-highlight"><i class="fas fa-file-alt"></i> <strong>Documentação da API:</strong> Para documentação interativa (Swagger UI), é necessário executar o servidor da API. Consulte o repositório Web para instruções.</p>
         </section>
 
         <section>
             <h2><i class="fab fa-github"></i> Repositórios GitHub</h2>
             <div class="repo-links">
-                <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank" rel="noopener noreferrer" aria-label="Link para o repositório do Sistema Web e API no GitHub">
                     <i class="fas fa-code"></i> Sistema Web & API
                 </a>
-                <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank" rel="noopener noreferrer" aria-label="Link para o repositório do Firmware e Sensoriamento no GitHub">
                     <i class="fas fa-laptop-code"></i> Sensoriamento (Firmware)
                 </a>
             </div>
@@ -387,10 +400,12 @@
 
         <section>
             <h2><i class="fas fa-tools"></i> Como Executar Localmente</h2>
+            <p>Para executar o sistema completo (API + Frontend + Banco de Dados), você precisa do Docker instalado. Note que esta página é estática e não executa a API.</p>
             <ul>
-                <li>Clone o repositório principal e execute <code>docker-compose up --build</code></li>
-                <li>Acesse <a href="http://localhost:8001/">http://localhost:8001/</a> para visualizar o sistema</li>
-                <li>A documentação da API está disponível em <a href="http://localhost:8001/docs">http://localhost:8001/docs</a></li>
+                <li>Clone o repositório principal: <code>git clone https://github.com/Gmarques07/Sensorium-UFRPE.git</code></li>
+                <li>Navegue até o diretório e execute: <code>docker-compose up --build</code></li>
+                <li>Acesse o sistema em: <a href="http://localhost:8001/" target="_blank">http://localhost:8001/</a></li>
+                <li>A documentação da API (Swagger UI) estará disponível em: <a href="http://localhost:8001/docs" target="_blank">http://localhost:8001/docs</a></li>
             </ul>
         </section>
 
@@ -405,7 +420,7 @@
             <h2><i class="fas fa-desktop"></i> Demonstração em Vídeo</h2>
             <p>Confira abaixo a demonstração prática do projeto Sensorium em funcionamento:</p>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/H6O8vtQYtQE" title="Demonstração Sensorium" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/H6O8vtQYtQE" title="Demonstração do Projeto Sensorium - Monitoramento Inteligente com FastAPI e ESP32" allowfullscreen></iframe>
             </div>
         </section>
 
@@ -413,13 +428,14 @@
             <h2><i class="fas fa-database"></i> Arquitetura do Banco de Dados</h2>
             <p>O sistema é construído sobre as seguintes tabelas principais:</p>
             <ul>
-                <li>Usuarios: Armazena informações de usuário e autenticação.</li>
-                <li>Locais: Representa sensores/dispositivos (nome, tipo, descrição, chave API).</li>
-                <li>Leituras: Registros de dados dos sensores (pH, umidade, nível de água).</li>
-                <li>Notificações: Mensagens e alertas para usuários.</li>
-                <li>Regras de Alerta: Condições que acionam notificações.</li>
-                <li>Usuário-Sensor: Tabela de relacionamento para controle de acesso.</li>
+                <li>**Usuarios**: Armazena informações de usuário e autenticação (e.g., nome, email, senha hash).</li>
+                <li>**Locais**: Representa sensores/dispositivos (nome, tipo, descrição, chave API).</li>
+                <li>**Leituras**: Registros de dados dos sensores (pH, umidade, nível de água, timestamp).</li>
+                <li>**Notificações**: Mensagens e alertas para usuários.</li>
+                <li>**Regras de Alerta**: Condições que acionam notificações (e.g., se pH &lt; 6.0, enviar alerta).</li>
+                <li>**Usuário-Sensor**: Tabela de relacionamento para controle de acesso (quem pode ver qual sensor).</li>
             </ul>
+            
         </section>
     </main>
 
@@ -434,18 +450,19 @@
             const toggle = document.getElementById('themeToggle');
             const icon = document.getElementById('themeIcon');
             const text = document.getElementById('themeText');
+            const feedback = document.getElementById('themeFeedback'); // Novo elemento ARIA Live
 
             // Inicializa a partir do localStorage (se existir)
             const stored = localStorage.getItem('sensorium-theme'); // 'light' or 'dark'
             if (stored) {
                 root.setAttribute('data-theme', stored);
-                updateUI(stored);
+                updateUI(stored, false); // Não emite feedback no carregamento inicial
             } else {
                 // opcional: detectar preferência do sistema
                 const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (prefersDark) {
                     root.setAttribute('data-theme', 'dark');
-                    updateUI('dark');
+                    updateUI('dark', false);
                 }
             }
 
@@ -454,16 +471,26 @@
                 const next = current === 'light' ? 'dark' : 'light';
                 root.setAttribute('data-theme', next);
                 localStorage.setItem('sensorium-theme', next);
-                updateUI(next);
+                updateUI(next, true); // Emite feedback após a ação do usuário
             });
 
-            function updateUI(theme) {
+            function updateUI(theme, announce = false) {
+                let themeName = '';
                 if (theme === 'dark') {
                     icon.className = 'fas fa-sun';
                     text.textContent = 'Modo Claro';
+                    themeName = 'Modo Escuro ativado.';
                 } else {
                     icon.className = 'fas fa-moon';
                     text.textContent = 'Modo Escuro';
+                    themeName = 'Modo Claro ativado.';
+                }
+                
+                // Anuncia a mudança de tema para leitores de tela
+                if (announce) {
+                    feedback.textContent = themeName;
+                    // Limpa o conteúdo após um breve período
+                    setTimeout(() => { feedback.textContent = ''; }, 1000);
                 }
             }
         })();
