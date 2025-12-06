@@ -61,10 +61,10 @@
     <p>Monitoramento inteligente e integração de sensores em tempo real com dashboards modernos.</p>
     <p>Navegue pelo nosso sistema:</p>
     <nav class="main-nav">
-       <a href="http://18.190.79.68:8001/">Início</a>
-       <a href="http://18.190.79.68:8001/login_usuario.html">Login</a>
-       <a href="http://18.190.79.68:8001/cadastro.html">Cadastro</a>
-       <a href="http://18.190.79.68:8001/sobre.html">Sobre</a>
+       <a href="/">Início</a>
+       <a href="/login_usuario.html">Login</a>
+       <a href="/cadastro.html">Cadastro</a>
+       <a href="/sobre.html">Sobre</a>
     </nav>
   </header>
 
@@ -82,24 +82,40 @@
         <span>HTML5</span>
         <span>CSS3</span>
         <span>JavaScript</span>
-        <span>AWS EC2</span>
+        <span>JWT</span>
+        <span>OAuth2</span>
       </div>
     </section>
 
     <section>
       <h2>Principais Funcionalidades</h2>
       <div class="features-list">
-        <h3>Instalação e Deploy Simplificados</h3>
-        <p>Utilize Docker para subir todo o ambiente (backend, banco de dados, testes) com um único comando.</p>
-        <h3>API RESTful Moderna</h3>
-        <p>Backend em FastAPI, com endpoints seguros, JWT, integração com sensores e documentação automática (Swagger/OpenAPI).</p>
-        <h3>Dashboards Interativos</h3>
-        <p>Visualize leituras em tempo real, relatórios e status dos sensores em uma interface web responsiva.</p>
-        <h3>Testes Automatizados</h3>
-        <p>Testes unitários e de integração com Pytest, garantindo qualidade e confiabilidade do sistema.</p>
-        <h3>Integração com Hardware</h3>
-        <p>Comunicação direta com ESP32, Arduino e Raspberry Pi Pico para coleta e envio de dados.</p>
+        <h3>Gerenciamento de Usuários</h3>
+        <p>Sistema completo de cadastro e login com autenticação JWT, validação de senhas e proteção de rotas.</p>
+        <h3>Controle de Acesso e Permissões</h3>
+        <p>Associação de sensores a usuários específicos, controle de acesso granular e diferentes níveis de permissão.</p>
+        <h3>Visualização de Dados em Tempo Real</h3>
+        <p>Dashboards interativos para visualização de dados dos sensores, incluindo pH, umidade e nível de água.</p>
+        <h3>Gerenciamento de Sensores</h3>
+        <p>Interface administrativa para gerenciamento de sensores e atribuição de sensores a usuários.</p>
+        <h3>Notificações</h3>
+        <p>Sistema de notificações para alertas e eventos importantes.</p>
+        <h3>Configurações e Regras de Alerta</h3>
+        <p>Configurações personalizáveis e regras de alerta baseadas em leituras de sensores.</p>
       </div>
+    </section>
+
+    <section>
+      <h2>API Restful</h2>
+      <p>Nossa API fornece endpoints para:</p>
+      <ul>
+        <li>Autenticação (login, cadastro, recuperação de senha)</li>
+        <li>Gerenciamento de usuários e sensores</li>
+        <li>Registro e recuperação de leituras de sensores</li>
+        <li>Gerenciamento de notificações</li>
+        <li>Criação e configuração de regras de alerta</li>
+      </ul>
+      <p class="api-highlight">Acesse a documentação completa da API em: <a href="/docs">http://localhost:8001/docs</a> (durante execução local)</p>
     </section>
 
     <section>
@@ -136,8 +152,10 @@
           <ul>
             <li>JWT (tokens de acesso para proteger rotas)</li>
             <li>OAuth2 (fluxo de autenticação, incluindo Login com Google)</li>
+            <li>BCrypt (hashing de senhas)</li>
           </ul>
         </li>
+        <li><strong>Envio de E-mails:</strong> Yagmail (notificações e confirmações)</li>
         <li><strong>Servidor ASGI:</strong> Uvicorn (execução de alta performance da aplicação)</li>
       </ul>
 
@@ -158,17 +176,20 @@
       <ul>
         <li>Pytest (automação de testes unitários e de integração)</li>
         <li>Coverage.py (análise de cobertura de código)</li>
+        <li>Testes de integração para todas as funcionalidades principais</li>
       </ul>
 
       <h3>DevOps e Infraestrutura</h3>
       <ul>
         <li>Docker e Docker Compose (containerização da aplicação e dependências)</li>
+        <li>Caddy (proxy reverso e gerenciamento de SSL)</li>
+        <li>Execução de testes automatizados antes do início do servidor</li>
       </ul>
 
       <h3>Hardware e Comunicação</h3>
       <ul>
         <li>Microcontroladores: ESP32, Arduino, Raspberry Pi Pico W</li>
-        <li>Sensores: Nível de água, pH, luz, umidade, entre outros</li>
+        <li>Sensores: Nível de água (boia), pH, umidade do solo</li>
         <li>Protocolos: HTTP/HTTPS (comunicação web e hardware), Serial (Arduino)</li>
       </ul>
     </section>
@@ -179,6 +200,7 @@
       <ul>
         <li>Clone o repositório principal e execute <code>docker-compose up --build</code></li>
         <li>Acesse <a href="http://localhost:8001/">http://localhost:8001/</a> para visualizar o sistema</li>
+        <li>A documentação da API está disponível em <a href="http://localhost:8001/docs">http://localhost:8001/docs</a></li>
       </ul>
     </section>
 
@@ -188,12 +210,27 @@
         <li>Acesse o link <a href="http://18.190.79.68:8001/">http://18.190.79.68:8001/</a></li>
       </ul>
     </section>
+    
     <section>
       <h2>Demonstração em Vídeo</h2>
       <p>Confira abaixo a demonstração prática do projeto Sensorium em funcionamento:</p>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/H6O8vtQYtQE" title="Demonstração Sensorium" allowfullscreen></iframe>
       </div>
+    </section>
+    
+    <section>
+      <h2>Arquitetura do Banco de Dados</h2>
+      <p>Nossa arquitetura de banco de dados inclui as seguintes tabelas principais:</p>
+      <ul>
+        <li><strong>Usuarios:</strong> Armazena informações de usuários (nome, email, senha hash, endereço)</li>
+        <li><strong>Locais:</strong> Representa sensores/dispositivos (nome, tipo, descrição, chave API)</li>
+        <li><strong>Leituras:</strong> Registros de dados dos sensores (pH, umidade, nível de água)</li>
+        <li><strong>Notificações:</strong> Mensagens e alertas para usuários</li>
+        <li><strong>Configurações:</strong> Parâmetros configuráveis do sistema</li>
+        <li><strong>Regras de Alerta:</strong> Condições que acionam notificações</li>
+        <li><strong>Usuário-Sensor:</strong> Tabela de associação para definir quais sensores cada usuário pode acessar</li>
+      </ul>
     </section>
   </main>
 
