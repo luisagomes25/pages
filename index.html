@@ -1,241 +1,472 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sensorium - Monitoramento Inteligente</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f8; color: #222; display: flex; flex-direction: column; min-height: 100vh; }
-    header { background: linear-gradient(90deg, #0077b6, #023e8a); color: #fff; text-align: center; padding: 2em 1em 1em; }
-    header h1 { font-size: 2.5em; margin-bottom: 0.3em; }
-    header p { font-size: 1.2em; font-weight: 300; }
-    .main-nav { margin-top: 1.5em; padding-top: 1em; border-top: 1px solid rgba(255, 255, 255, 0.2); }
-    .main-nav a { color: #fff; text-decoration: none; font-weight: 500; margin: 0 1em; padding: 0.5em 1em; border-radius: 4px; transition: background-color 0.3s; }
-    .main-nav a:hover { background-color: #005f8a; }
-    main { flex: 1; padding: 2em 1em; max-width: 960px; margin: 0 auto; }
-    section { background: #fff; border-radius: 10px; padding: 2em; margin-bottom: 2em; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06); }
-    section h2 { font-size: 1.75em; margin-bottom: 1em; color: #023e8a; }
-    .features-list h3 { font-size: 1.25em; color: #0077b6; margin-top: 1.5em; margin-bottom: 0.5em; border-bottom: 2px solid #f4f6f8; padding-bottom: 0.2em; }
-    .features-list h3:first-child { margin-top: 0; }
-    p, li { font-size: 1.05em; line-height: 1.6; }
-    ul { padding-left: 1.2em; list-style-type: disc; }
-    .repo-links { display: flex; flex-wrap: wrap; gap: 1em; margin-top: 1em; }
-    .repo-links a { padding: 0.6em 1.2em; background-color: #0077b6; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.3s ease; }
-    .repo-links a:hover { background-color: #005f8a; }
-    a { color: #0077b6; }
-    .tech-badges { display: flex; flex-wrap: wrap; gap: 0.7em; margin: 1em 0; }
-    .tech-badges span { background: #e0e7ef; color: #023e8a; border-radius: 4px; padding: 0.3em 0.8em; font-size: 0.98em; font-weight: 500; }
-    .api-highlight { background: #e0f7fa; border-left: 5px solid #0077b6; padding: 1em; margin: 1.5em 0; border-radius: 6px; }
-    footer { background-color: #e0e0e0; color: #555; text-align: center; padding: 1em; font-size: 0.9em; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sensorium - Monitoramento Inteligente</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ/cn6/f/vW8fGFLxM9cE00Y80F7rA6tK94D1K0A1uR7F9l9fR3F1g7Fz6JpQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Variáveis de Cores (light) */
+        :root {
+            --primary-blue: #0077b6;
+            --dark-blue: #023e8a;
+            --accent-green: #48a66a;
+            --background-light: #f9fbfd;
+            --text-color: #333;
+            --section-bg: #fff;
+            --shadow-light: rgba(0,0,0,0.08);
+        }
 
-    /* Responsividade do vídeo */
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+        /* Tema escuro */
+        [data-theme="dark"] {
+            --primary-blue: #4ea8de;
+            --dark-blue: #1e3a5f;
+            --accent-green: #5ccf89;
+            --background-light: #0d1117;
+            --text-color: #e6edf3;
+            --section-bg: #161b22;
+            --shadow-light: rgba(255,255,255,0.05);
+        }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 2em; }
-      section h2 { font-size: 1.4em; }
-      .repo-links { flex-direction: column; }
-      .main-nav a { display: block; margin: 0.5em 0; }
-    }
-  </style>
+        /* RESET/BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            color: #fff;
+            text-align: center;
+            padding: 3em 1em 2em;
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 0.1em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        /* Botão alternar tema */
+        .theme-toggle {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: #fff;
+            padding: 0.5em 0.65em;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            backdrop-filter: blur(4px);
+            transition: background 0.25s, transform 0.12s;
+        }
+        .theme-toggle:hover { transform: translateY(-2px); }
+        .theme-toggle i { font-size: 1.05em; }
+
+        /* NAV */
+        .main-nav {
+            margin-top: 2em;
+            display: flex;
+            justify-content: center;
+            gap: 1.5em;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.6em 1.5em;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 0.95em;
+        }
+        .main-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 3em 1em;
+            max-width: 1080px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* SEÇÕES */
+        section {
+            background: var(--section-bg);
+            border-radius: 12px;
+            padding: 2.5em;
+            margin-bottom: 3em;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            border-top: 5px solid var(--primary-blue);
+            transition: background 0.3s, border-top-color 0.3s;
+        }
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 1.2em;
+            color: var(--dark-blue);
+            border-left: 4px solid var(--accent-green);
+            padding-left: 0.5em;
+            font-weight: 600;
+        }
+
+        /* LISTA DE FUNCIONALIDADES */
+        .features-list h3 {
+            font-size: 1.35em;
+            color: var(--primary-blue);
+            margin-top: 2em;
+            margin-bottom: 0.6em;
+            display: flex;
+            align-items: center;
+        }
+        .features-list h3 i {
+            color: var(--accent-green);
+            margin-right: 0.6em;
+            font-size: 1.1em;
+        }
+
+        p, li { font-size: 1.05em; line-height: 1.7; color: var(--text-color); }
+
+        /* Melhoria nas Listas (UL) */
+        ul { padding-left: 1.5em; list-style-type: none; }
+        ul li::before {
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--accent-green);
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* REPOSITÓRIOS */
+        .repo-links { display: flex; flex-wrap: wrap; gap: 1.5em; margin-top: 1.5em; }
+        .repo-links a {
+            padding: 0.8em 1.5em;
+            background-color: var(--accent-green);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 119, 182, 0.12);
+        }
+        .repo-links a:hover {
+            filter: brightness(0.95);
+            transform: translateY(-2px);
+        }
+        .repo-links a i { margin-right: 0.5em; }
+
+        a { color: var(--primary-blue); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--dark-blue); text-decoration: underline; }
+
+        /* TECH BADGES */
+        .tech-badges { display: flex; flex-wrap: wrap; gap: 0.8em; margin: 1.5em 0; }
+        .tech-badges span {
+            background: #e6f3ff;
+            color: var(--dark-blue);
+            border-radius: 6px;
+            padding: 0.5em 1em;
+            font-size: 0.95em;
+            font-weight: 600;
+            border: 1px solid #cce0ff;
+        }
+
+        /* API HIGHLIGHT */
+        .api-highlight {
+            background: #fffce3;
+            border-left: 5px solid #ffc300;
+            padding: 1.5em;
+            margin: 2em 0;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #eef1f3;
+            color: #777;
+            text-align: center;
+            padding: 1.5em;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+
+        /* RESPONSIVIDADE DO VÍDEO */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%; border: 0;
+        }
+
+        /* DESTAQUE DE LISTA DE TECNOLOGIAS */
+        .tech-details strong { color: var(--dark-blue); font-weight: 600; }
+
+        /* API badge dark adjustments */
+        [data-theme="dark"] .tech-badges span {
+            background: #1c2128; border: 1px solid #2a2f36; color: #cce8ff;
+        }
+        [data-theme="dark"] .api-highlight {
+            background: #3b2300; border-left-color: #e3b341; color: #fff;
+        }
+        [data-theme="dark"] footer { background-color: #0f141a; color: #8b949e; border-top-color: #22262b; }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            header { padding: 2em 1em 1em; }
+            header h1 { font-size: 2.5em; }
+            section { padding: 1.5em; margin-bottom: 2em; }
+            section h2 { font-size: 1.7em; }
+            .main-nav { flex-direction: column; gap: 0.5em; margin-top: 1em; }
+            .main-nav a { display: block; margin: 0 auto; max-width: 250px; }
+            .repo-links { flex-direction: column; gap: 0.8em; }
+            .theme-toggle { top: 12px; right: 12px; padding: 0.45em 0.55em; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Sensorium</h1>
-    <p>Monitoramento inteligente e integração de sensores em tempo real com dashboards modernos.</p>
-    <p>Navegue pelo nosso sistema:</p>
-    <nav class="main-nav">
-       <a href="/">Início</a>
-       <a href="/login_usuario.html">Login</a>
-       <a href="/cadastro.html">Cadastro</a>
-       <a href="/sobre.html">Sobre</a>
-    </nav>
-  </header>
+    <header>
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo">
+            <i class="fas fa-moon" id="themeIcon"></i> <span id="themeText">Modo Escuro</span>
+        </button>
 
-  <main>
-    <section>
-      <h2>O que é o Sensorium?</h2>
-      <p>O Sensorium é uma plataforma completa para monitoramento inteligente de ambientes, integrando sensores físicos (ESP32, Arduino, Raspberry Pi Pico) a um backend robusto em Python (FastAPI), com visualização de dados em dashboards web modernos. Ideal para aplicações acadêmicas, industriais e residenciais.</p>
-      <div class="tech-badges">
-        <span>FastAPI</span>
-        <span>MySQL</span>
-        <span>Docker</span>
-        <span>Pytest</span>
-        <span>Arduino/ESP32</span>
-        <span>Raspberry Pi Pico</span>
-        <span>HTML5</span>
-        <span>CSS3</span>
-        <span>JavaScript</span>
-        <span>JWT</span>
-        <span>OAuth2</span>
-      </div>
-    </section>
+        <h1>Sensorium</h1>
+        <p>Monitoramento <strong>inteligente</strong> e integração de sensores em <strong>tempo real</strong>.</p>
 
-    <section>
-      <h2>Principais Funcionalidades</h2>
-      <div class="features-list">
-        <h3>Gerenciamento de Usuários</h3>
-        <p>Sistema completo de cadastro e login com autenticação JWT, validação de senhas e proteção de rotas.</p>
-        <h3>Controle de Acesso e Permissões</h3>
-        <p>Associação de sensores a usuários específicos, controle de acesso granular e diferentes níveis de permissão.</p>
-        <h3>Visualização de Dados em Tempo Real</h3>
-        <p>Dashboards interativos para visualização de dados dos sensores, incluindo pH, umidade e nível de água.</p>
-        <h3>Gerenciamento de Sensores</h3>
-        <p>Interface administrativa para gerenciamento de sensores e atribuição de sensores a usuários.</p>
-        <h3>Notificações</h3>
-        <p>Sistema de notificações para alertas e eventos importantes.</p>
-        <h3>Configurações e Regras de Alerta</h3>
-        <p>Configurações personalizáveis e regras de alerta baseadas em leituras de sensores.</p>
-      </div>
-    </section>
+        <nav class="main-nav" aria-label="Navegação principal">
+            <a href="https://sensoriumtech.online/"><i class="fas fa-home"></i> Início</a>
+            <a href="https://sensoriumtech.online/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="https://sensoriumtech.online/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a>
+            <a href="https://sensoriumtech.online/sobre"><i class="fas fa-info-circle"></i> Sobre</a>
+        </nav>
+    </header>
 
-    <section>
-      <h2>API Restful</h2>
-      <p>Nossa API fornece endpoints para:</p>
-      <ul>
-        <li>Autenticação (login, cadastro, recuperação de senha)</li>
-        <li>Gerenciamento de usuários e sensores</li>
-        <li>Registro e recuperação de leituras de sensores</li>
-        <li>Gerenciamento de notificações</li>
-        <li>Criação e configuração de regras de alerta</li>
-      </ul>
-      <p class="api-highlight">Acesse a documentação completa da API em: <a href="/docs">http://localhost:8001/docs</a> (durante execução local)</p>
-    </section>
+    <main>
+        <section>
+            <h2><i class="fas fa-microchip"></i> O que é o Sensorium?</h2>
+            <p>O <strong>Sensorium</strong> é uma plataforma completa para monitoramento inteligente de ambientes, integrando sensores físicos
+            (<strong>ESP32</strong>, <strong>Arduino</strong>, <strong>Raspberry Pi Pico</strong>) a um backend robusto em Python (FastAPI),
+            com visualização de dados em dashboards web modernos. Ideal para aplicações acadêmicas, industriais e residenciais.</p>
 
-    <section>
-      <h2>Repositórios GitHub</h2>
-      <div class="repo-links">
-        <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank">Sistema Web & API</a>
-        <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank">Sensoriamento (Firmware)</a>
-      </div>
-    </section>
+            <div class="tech-badges" aria-hidden="true">
+                <span>FastAPI</span>
+                <span>MySQL</span>
+                <span>Docker</span>
+                <span>Pytest</span>
+                <span>Arduino/ESP32</span>
+                <span>Raspberry Pi Pico</span>
+                <span>JWT/OAuth2</span>
+                <span>Chart.js</span>
+            </div>
+        </section>
 
-    <section>
-      <h2>Equipe</h2>
-      <ul>
-        <li><strong>Gabriel Alves:</strong> Responsável pela infraestrutura Docker e execução de testes.</li>
-        <li><strong>João Victor:</strong> Implementação da funcionalidade de login via Google utilizando OAuth.</li>
-        <li><strong>Luís Felipe de Arruda Gomes:</strong> Desenvolvimento da API com FastAPI, integração com sensores e criação de scripts para banco de dados.</li>
-        <li><strong>Pedro Ivo Cavalcante:</strong> Identificação e correção de erros na leitura dos sensores.</li>
-        <li><strong>Pedro Marques:</strong> Implementação do envio de e-mail de confirmação no cadastro.</li>
-        <li><strong>Vinícius Rodrigues:</strong> Desenvolvimento da compatibilidade com Raspberry Pi.</li>
-      </ul>
-    </section>
+        <section>
+            <h2><i class="fas fa-cogs"></i> Principais Funcionalidades</h2>
+            <div class="features-list">
+                <h3><i class="fas fa-user-shield"></i> Gerenciamento de Usuários</h3>
+                <p>Sistema completo de cadastro e login com autenticação <strong>JWT</strong>, validação de senhas e proteção de rotas.</p>
 
-    <section>
-      <h2>Tecnologias Utilizadas</h2>
-      <p>Análise completa do projeto:</p>
+                <h3><i class="fas fa-lock"></i> Controle de Acesso e Permissões</h3>
+                <p>Associação de sensores a usuários específicos, controle de acesso granular e diferentes níveis de permissão.</p>
 
-      <h3>Backend</h3>
-      <ul>
-        <li><strong>Linguagem:</strong> Python</li>
-        <li><strong>Framework Principal:</strong> FastAPI (para construção de APIs de alta performance)</li>
-        <li><strong>Validação de Dados:</strong> Pydantic (para validação, serialização e documentação automática)</li>
-        <li><strong>ORM:</strong> SQLAlchemy (comunicação com MySQL)</li>
-        <li><strong>Autenticação e Segurança:</strong>
-          <ul>
-            <li>JWT (tokens de acesso para proteger rotas)</li>
-            <li>OAuth2 (fluxo de autenticação, incluindo Login com Google)</li>
-            <li>BCrypt (hashing de senhas)</li>
-          </ul>
-        </li>
-        <li><strong>Envio de E-mails:</strong> Yagmail (notificações e confirmações)</li>
-        <li><strong>Servidor ASGI:</strong> Uvicorn (execução de alta performance da aplicação)</li>
-      </ul>
+                <h3><i class="fas fa-chart-line"></i> Visualização de Dados em Tempo Real</h3>
+                <p>Dashboards interativos para visualização de dados dos sensores, incluindo <strong>pH</strong>, <strong>umidade</strong> e <strong>nível de água</strong>.</p>
 
-      <h3>Frontend</h3>
-      <ul>
-        <li><strong>Estrutura e Estilo:</strong> HTML5, CSS3, Bootstrap 5</li>
-        <li><strong>Interatividade e Visualização de Dados:</strong> JavaScript, Chart.js</li>
-        <li><strong>Renderização no Servidor:</strong> Jinja2</li>
-      </ul>
+                <h3><i class="fas fa-wrench"></i> Gerenciamento de Sensores</h3>
+                <p>Interface administrativa para gerenciamento e atribuição de sensores a usuários.</p>
 
-      <h3>Banco de Dados</h3>
-      <ul>
-        <li><strong>Principal:</strong> MySQL 8.0</li>
-        <li><strong>Testes:</strong> SQLite (em memória para testes unitários)</li>
-      </ul>
+                <h3><i class="fas fa-bell"></i> Notificações e Alertas</h3>
+                <p>Sistema de notificações e <strong>regras de alerta</strong> baseadas em leituras de sensores para eventos importantes.</p>
+            </div>
+        </section>
 
-      <h3>Testes e Qualidade de Código</h3>
-      <ul>
-        <li>Pytest (automação de testes unitários e de integração)</li>
-        <li>Coverage.py (análise de cobertura de código)</li>
-        <li>Testes de integração para todas as funcionalidades principais</li>
-      </ul>
+        <section>
+            <h2><i class="fas fa-globe"></i> API Restful</h2>
+            <p>Nossa <strong>API</strong> fornece endpoints robustos para a gestão completa do sistema:</p>
+            <ul>
+                <li>Autenticação (login, cadastro, recuperação de senha)</li>
+                <li>Gerenciamento de usuários e sensores</li>
+                <li>Registro e recuperação de leituras de sensores</li>
+                <li>Gerenciamento de notificações e regras de alerta</li>
+            </ul>
+            <p class="api-highlight"><i class="fas fa-file-alt"></i> <strong>Documentação da API:</strong> Acesse a documentação completa em
+               <a href="/docs">http://localhost:8001/docs</a> (durante execução local).</p>
+        </section>
 
-      <h3>DevOps e Infraestrutura</h3>
-      <ul>
-        <li>Docker e Docker Compose (containerização da aplicação e dependências)</li>
-        <li>Caddy (proxy reverso e gerenciamento de SSL)</li>
-        <li>Execução de testes automatizados antes do início do servidor</li>
-      </ul>
+        <section>
+            <h2><i class="fab fa-github"></i> Repositórios GitHub</h2>
+            <div class="repo-links">
+                <a href="https://github.com/Gmarques07/Sensorium-UFRPE" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-code"></i> Sistema Web & API
+                </a>
+                <a href="https://github.com/viniciusrodriguess1/Sensoriamento-Remoto" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-laptop-code"></i> Sensoriamento (Firmware)
+                </a>
+            </div>
+        </section>
 
-      <h3>Hardware e Comunicação</h3>
-      <ul>
-        <li>Microcontroladores: ESP32, Arduino, Raspberry Pi Pico W</li>
-        <li>Sensores: Nível de água (boia), pH, umidade do solo</li>
-        <li>Protocolos: HTTP/HTTPS (comunicação web e hardware), Serial (Arduino)</li>
-      </ul>
-    </section>
+        <section>
+            <h2><i class="fas fa-users"></i> Equipe</h2>
+            <ul>
+                <li><strong>Gabriel Alves:</strong> Responsável pela infraestrutura Docker e execução de testes.</li>
+                <li><strong>João Victor:</strong> Implementação da funcionalidade de login via Google utilizando OAuth.</li>
+                <li><strong>Luís Felipe de Arruda Gomes:</strong> Desenvolvimento da API com FastAPI, integração com sensores e criação de scripts para banco de dados e desenvolvimento mobile.</li>
+                <li><strong>Pedro Ivo Cavalcante:</strong> Identificação e correção de erros na leitura dos sensores.</li>
+                <li><strong>Pedro Marques:</strong> Implementação do envio de e-mail de confirmação no cadastro.</li>
+                <li><strong>Vinícius Rodrigues:</strong> Desenvolvimento da compatibilidade com Raspberry Pi e desenvolvimento mobile.</li>
+            </ul>
+        </section>
 
+        <section class="tech-details">
+            <h2><i class="fas fa-flask"></i> Tecnologias Utilizadas</h2>
+            <p>Análise completa das ferramentas que tornam o Sensorium possível:</p>
 
-    <section>
-      <h2>Como Executar Localmente</h2>
-      <ul>
-        <li>Clone o repositório principal e execute <code>docker-compose up --build</code></li>
-        <li>Acesse <a href="http://localhost:8001/">http://localhost:8001/</a> para visualizar o sistema</li>
-        <li>A documentação da API está disponível em <a href="http://localhost:8001/docs">http://localhost:8001/docs</a></li>
-      </ul>
-    </section>
+            <h3>Backend</h3>
+            <ul>
+                <li><strong>Linguagem:</strong> Python</li>
+                <li><strong>Framework Principal:</strong> FastAPI (APIs de alta performance)</li>
+                <li><strong>ORM/DB:</strong> SQLAlchemy (com MySQL)</li>
+                <li><strong>Segurança:</strong> JWT, OAuth2 (Login com Google) e BCrypt (hashing de senhas)</li>
+                <li><strong>Servidor ASGI:</strong> Uvicorn</li>
+            </ul>
 
-    <section>
-      <h2>Como Executar na Web</h2>
-      <ul>
-        <li>Acesse o link <a href="http://18.190.79.68:8001/">http://18.190.79.68:8001/</a></li>
-      </ul>
-    </section>
-    
-    <section>
-      <h2>Demonstração em Vídeo</h2>
-      <p>Confira abaixo a demonstração prática do projeto Sensorium em funcionamento:</p>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/H6O8vtQYtQE" title="Demonstração Sensorium" allowfullscreen></iframe>
-      </div>
-    </section>
-    
-    <section>
-      <h2>Arquitetura do Banco de Dados</h2>
-      <p>Nossa arquitetura de banco de dados inclui as seguintes tabelas principais:</p>
-      <ul>
-        <li><strong>Usuarios:</strong> Armazena informações de usuários (nome, email, senha hash, endereço)</li>
-        <li><strong>Locais:</strong> Representa sensores/dispositivos (nome, tipo, descrição, chave API)</li>
-        <li><strong>Leituras:</strong> Registros de dados dos sensores (pH, umidade, nível de água)</li>
-        <li><strong>Notificações:</strong> Mensagens e alertas para usuários</li>
-        <li><strong>Configurações:</strong> Parâmetros configuráveis do sistema</li>
-        <li><strong>Regras de Alerta:</strong> Condições que acionam notificações</li>
-        <li><strong>Usuário-Sensor:</strong> Tabela de associação para definir quais sensores cada usuário pode acessar</li>
-      </ul>
-    </section>
-  </main>
+            <h3>Frontend</h3>
+            <ul>
+                <li><strong>Estrutura:</strong> HTML5, CSS3, Bootstrap 5</li>
+                <li><strong>Visualização:</strong> JavaScript e Chart.js (gráficos interativos)</li>
+                <li><strong>Renderização:</strong> Jinja2</li>
+            </ul>
 
-  <footer>
-    <p>© 2025 Sensorium. Todos os direitos reservados. | UFRPE | Belo Jardim, PE</p>
-  </footer>
+            <h3>DevOps e Infraestrutura</h3>
+            <ul>
+                <li><strong>Containerização:</strong> Docker e Docker Compose</li>
+                <li><strong>Testes:</strong> Pytest (Unitários e de Integração) com Coverage.py</li>
+                <li><strong>Proxy:</strong> Caddy (Proxy reverso e SSL)</li>
+            </ul>
+
+            <h3>Hardware e Comunicação</h3>
+            <ul>
+                <li><strong>Microcontroladores:</strong> ESP32, Arduino, Raspberry Pi Pico W</li>
+                <li><strong>Sensores:</strong> Nível de água (boia), pH, umidade do solo</li>
+                <li><strong>Protocolos:</strong> HTTP/HTTPS (comunicação web e hardware), Serial (Arduino)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-tools"></i> Como Executar Localmente</h2>
+            <ul>
+                <li>Clone o repositório principal e execute <code>docker-compose up --build</code></li>
+                <li>Acesse <a href="http://localhost:8001/">http://localhost:8001/</a> para visualizar o sistema</li>
+                <li>A documentação da API está disponível em <a href="http://localhost:8001/docs">http://localhost:8001/docs</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-cloud"></i> Como Executar na Web</h2>
+            <ul>
+                <li>Acesse o sistema online através do link: <a href="https://sensoriumtech.online/">https://sensoriumtech.online/</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-desktop"></i> Demonstração em Vídeo</h2>
+            <p>Confira abaixo a demonstração prática do projeto Sensorium em funcionamento:</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/H6O8vtQYtQE" title="Demonstração Sensorium" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-database"></i> Arquitetura do Banco de Dados</h2>
+            <p>O sistema é construído sobre as seguintes tabelas principais:</p>
+            <ul>
+                <li>Usuarios: Armazena informações de usuário e autenticação.</li>
+                <li>Locais: Representa sensores/dispositivos (nome, tipo, descrição, chave API).</li>
+                <li>Leituras: Registros de dados dos sensores (pH, umidade, nível de água).</li>
+                <li>Notificações: Mensagens e alertas para usuários.</li>
+                <li>Regras de Alerta: Condições que acionam notificações.</li>
+                <li>Usuário-Sensor: Tabela de relacionamento para controle de acesso.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Sensorium. Todos os direitos reservados. | UFRPE | Belo Jardim, PE</p>
+    </footer>
+
+    <script>
+        // Controle do tema com persistência em localStorage
+        (function () {
+            const root = document.documentElement;
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+
+            // Inicializa a partir do localStorage (se existir)
+            const stored = localStorage.getItem('sensorium-theme'); // 'light' or 'dark'
+            if (stored) {
+                root.setAttribute('data-theme', stored);
+                updateUI(stored);
+            } else {
+                // opcional: detectar preferência do sistema
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    root.setAttribute('data-theme', 'dark');
+                    updateUI('dark');
+                }
+            }
+
+            toggle.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') || 'light';
+                const next = current === 'light' ? 'dark' : 'light';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('sensorium-theme', next);
+                updateUI(next);
+            });
+
+            function updateUI(theme) {
+                if (theme === 'dark') {
+                    icon.className = 'fas fa-sun';
+                    text.textContent = 'Modo Claro';
+                } else {
+                    icon.className = 'fas fa-moon';
+                    text.textContent = 'Modo Escuro';
+                }
+            }
+        })();
+    </script>
 </body>
 </html>
