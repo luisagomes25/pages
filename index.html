@@ -396,7 +396,7 @@
             <p>Para executar o sistema completo (API + Frontend + Banco de Dados), você precisa do Docker instalado. Note que esta página é estática e não executa a API.</p>
             <ul>
                 <li>Clone o repositório principal: <code>git clone https://github.com/Gmarques07/Sensorium-UFRPE.git</code></li>
-                <li>Navegue até o diretório e execute: <code>docker-compose up --build</code></li>
+                <li>Navegue até o diretório e execute: <code>docker compose -f docker-compose.dev.yml up --build</code></li>
                 <li>Acesse o sistema em: <a href="http://localhost:8001/" target="_blank">http://localhost:8001/</a></li>
                 <li>A documentação da API (Swagger UI) estará disponível em: <a href="http://localhost:8001/docs" target="_blank">http://localhost:8001/docs</a></li>
             </ul>
